@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<title> Watcher</title>
+<head>
+<script src="lastwrite.js"></script>
+<script src="mario.js"></script>
+<style>
+p {
+  text-align: center;
+  font-size: 260px;
+  margin-top: 0px;
+}
+</style>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+// Set the date we're counting down to
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+  var newCountDownDate=(target+600)*1000//read from the lastwrite.js file
+  // Find the distance between now and the count down date
+  var distance = newCountDownDate - now;
+  // Time calculations for days, hours, minutes and seconds
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = minutes + ":" + seconds ;
+  document.title= minutes + ":" + seconds ;
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+    mario();
+    document.body.style.backgroundColor = "red";
+  }
+}, 1000);
+</script>
+    <script>//reload the page every 25 seconds
+setTimeout(function(){
+   window.location.reload(1);
+}, 25000);
+</script>
+</body>
+</html>
