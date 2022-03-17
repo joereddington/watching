@@ -29,6 +29,7 @@ var x = setInterval(function() {
   // Time calculations for days, hours, minutes and seconds
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  seconds =("00" + seconds).substr(-2,2);//to pad with zeros
     
   // Output the result in an element with id="demo"
   document.getElementById("demo").innerHTML = minutes + ":" + seconds ;
